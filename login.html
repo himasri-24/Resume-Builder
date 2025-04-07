@@ -64,8 +64,14 @@
       const password = document.getElementById("password").value;
       const errorMessage = document.getElementById("error-message");
 
+      // Use the local endpoint when testing locally,
+      // otherwise use your production backend URL.
+      const apiUrl = window.location.hostname === "localhost" 
+        ? "http://localhost:3002/signin" 
+        : "https://your-production-backend-url.com/signin"; // Replace with your deployed backend URL
+
       try {
-        const response = await fetch("http://localhost:3002/signin", {
+        const response = await fetch(apiUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password })
@@ -74,7 +80,7 @@
         const data = await response.json();
 
         if (response.ok) {
-          // ✅ Always redirect to `templets.html`
+          // ✅ Redirect to templats page on successful login
           window.location.href = "templets.html";
         } else {
           errorMessage.innerText = data.message || "Invalid login credentials.";
