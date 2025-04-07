@@ -66,9 +66,9 @@
 
       // Use the local endpoint when testing locally,
       // otherwise use your production backend URL.
-      const apiUrl = window.location.hostname === "localhost" 
-        ? "http://localhost:3002/signin" 
-        : "https://your-production-backend-url.com/signin"; // Replace with your deployed backend URL
+     const apiUrl = window.location.hostname === "localhost" 
+    ? "http://localhost:3002/signin" 
+    : "https://himasri-24.github.io/Resume-Builder/";
 
       try {
         const response = await fetch(apiUrl, {
